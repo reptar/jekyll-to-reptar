@@ -1,15 +1,16 @@
----
-layout: default
----
+{% extends 'default.html' %}
+
+{% block content %}
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
+    <h1 class="post-title" itemprop="name headline">{{ file.title }}</h1>
+    <p class="post-meta"><time datetime="{{ file.date | date }}" itemprop="datePublished">{{ file.date | date('MMM D, YYYY') }}</time>{% if file.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ file.author }}</span></span>{% endif %}</p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    {{ content }}
+    {{ file.content }}
   </div>
 
 </article>
+{% endblock%}
